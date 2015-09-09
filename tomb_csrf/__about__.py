@@ -1,0 +1,8 @@
+__title__ = 'tomb_csrf'
+__summary__ = 'CSRF protection for pyramid applications'
+__uri__ = 'http://github.com/TombProject/tomb_csrf'
+__version__ = '0.0.1'
+__author__ = 'John Anderson'
+__email__ = 'sontek@gmail.com'
+__license__ = 'MIT'
+__copyright__ = '2015 John Anderson (sontek)'
