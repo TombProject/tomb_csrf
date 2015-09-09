@@ -27,11 +27,12 @@ def check_csrf(event):
         return
 
     if request.method.upper() in SAFE_HEADERS:
-        #TODO: Have we explicitly added CSRF to it?
+        # TODO: Have we explicitly added CSRF to it?
         return
 
-    # We want to run origin checking on supported schemes, a lot of browsers
-    # don't pass proper origin/referer on HTTP so we want allow to turn that off
+    # We want to run origin checking on supported schemes, a lot of
+    # browsers don't pass proper origin/referer on HTTP so we want
+    # allow to turn that off
     if request.scheme in csrf_config.origin_schemes:
         origin = request.headers.get("Origin")
         referer = request.headers.get("Referer")
@@ -47,12 +48,14 @@ def check_csrf(event):
         full_origin = (originp.scheme, originp.hostname, originp.port)
         full_host = (hostp.scheme, hostp.hostname, hostp.port)
 
-        route_exemptions = csrf_config.route_origins.get(originp.hostname, set())
+        route_exemptions = csrf_config.route_origins.get(
+            originp.hostname, set()
+        )
 
         # We have allowed this route to work with this origin
         if (
-                originp.hostname in csrf_config.global_origins or
-                route_name in route_exemptions
+            originp.hostname in csrf_config.global_origins or
+            route_name in route_exemptions
         ):
             full_allowed_host = (hostp.scheme, originp.hostname, hostp.port)
             # Even though the origin is in the exemption list it was requested

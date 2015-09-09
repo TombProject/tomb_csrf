@@ -1,6 +1,7 @@
 import pytest
 from tomb_csrf.utils import SAFE_HEADERS, UNSAFE_HEADERS
 
+
 @pytest.mark.unit
 @pytest.mark.parametrize('request_method', SAFE_HEADERS)
 def test_safe_request_methods_no_csrf(test_app, request_method):

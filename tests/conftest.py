@@ -1,5 +1,4 @@
 import pytest
-import webtest
 
 
 @pytest.fixture
